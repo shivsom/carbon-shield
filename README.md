@@ -184,8 +184,5 @@ npm run install:all
 ## 📄 License
 MIT License. See [LICENSE](LICENSE) for details.
 
-## 🙌 Contributing
-Fork → PR. Tests/deploy scripts welcome!
-
 **Built for hackathons 🚀. Deploy in <5min.**
 
