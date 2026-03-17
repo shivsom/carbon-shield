@@ -2,8 +2,8 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [master]          # or main if you renamed
-  workflow_dispatch:            # allows manual trigger from Actions tab
+    branches: [master]   #change according to main branch 
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -24,15 +24,16 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20          # or 22 if you prefer
+          node-version: 20
           cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json  # helps cache better
 
       - name: Install dependencies
-        working-directory: frontend   # ← important: cd into your frontend folder
+        working-directory: frontend               # ← ADD THIS
         run: npm ci
 
       - name: Build
-        working-directory: frontend
+        working-directory: frontend               # ← ADD THIS
         run: npm run build
 
       - name: Setup Pages
@@ -41,7 +42,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: frontend/dist       # ← points to your built dist
+          path: frontend/dist                     # ← this path is correct
 
       - name: Deploy to GitHub Pages
         id: deployment
